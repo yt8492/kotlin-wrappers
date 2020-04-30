@@ -3,13 +3,22 @@ plugins {
 }
 
 dependencies {
-    implementation(project(":kotlin-extensions"))
     implementation(project(":kotlin-react"))
     implementation(project(":kotlin-react-dom"))
-    implementation(project(":kotlin-react-router-dom"))
-
+    implementation(project(":kotlin-styled"))
     implementation(kotlinxHtml("js"))
-
-    implementation(npm("react-quill", "1.3.5"))
-    implementation(npm("axios", "0.19.2"))
 }
+
+kotlin {
+    target {
+        browser {
+            webpackTask {
+                outputFileName = "main.js"
+            }
+            runTask {
+                outputFileName = "main.js"
+            }
+        }
+    }
+}
+
